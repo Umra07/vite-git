@@ -5,14 +5,14 @@ const StackVisualizer = () => {
   const [stack, setStack] = useState<string[]>([]);
 
   const handleClickedPush = () => {
-    setStack((stack) => [text, ...stack]);
+    if (text.trim()) setStack((stack) => [text, ...stack]);
     setText('');
   };
 
   const handleClickedPop = () => {
     setStack((prevStack) => {
       const newStack = [...prevStack];
-      newStack.pop();
+      newStack.shift();
       return newStack;
     });
   };
